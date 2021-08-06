@@ -55,7 +55,11 @@ defmodule Bcrypt.Base do
 
   defp load_nif do
     path = :filename.join(:code.priv_dir(:bcrypt_elixir), 'bcrypt_nif')
+    IO.inspect("PATH")
+    IO.inspect(path)
+
     :erlang.load_nif(path, 0)
+    |> IO.inspect()
   end
 
   defp hash(password, salt, prefix) when prefix in ["2a", "2b"] do
